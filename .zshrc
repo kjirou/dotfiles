@@ -37,7 +37,6 @@ PROMPT='%(!.#.$)'
 case "$TERM" in
 xterm*|kterm*|rxvt*)
     # TITLE BAR
-    # @see t-kawadu's .zshrc
     PROMPT=$(print "%{\e]2;%n@%m: %~\7%}$PROMPT")
 ;;
 screen*)
