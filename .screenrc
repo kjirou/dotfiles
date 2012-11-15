@@ -1,0 +1,30 @@
+#あいう
+
+# @version 0.1 (2007-03-15)
+# - 新規作成
+#
+# @see http://www.limy.org/program/screen_command.html
+
+# 起動時にウィンドウサイズが変更されるのを抑止、FreeBSDのみの問題らしい
+# @see http://www.proton.jp/apps/screen.html
+termcapinfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+
+# スクリーンコマンドモードに入るキーの変更
+escape ^Zz
+
+# ステータスライン
+# @see kawadu's .screenrc
+hardstatus alwayslastline "[%02c] %0`%-w%{=b bw}%n %t%{-}%+w %= %?%{=brw}%2`%{-} %?%1`"
+
+# 文字コードの指定
+# UTF-8ではない環境もあるため一時無効にする
+# screen alias="screen -U " で対処する
+#defencoding UTF-8
+
+# ウィンドウリサイズショートカット
+# ウィンドウを分割して選択した状態で screenコマンド -> r でリサイズモードに入る
+# j と k でサイズ変更、それ以外のキーを押すと終了
+bind r eval 'echo "Resize window"' 'command -c resize'
+bind -c resize ^]  command
+bind -c resize j eval 'resize +1' 'command -c resize'
+bind -c resize k eval 'resize -1' 'command -c resize'
