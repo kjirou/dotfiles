@@ -40,11 +40,12 @@ set hlsearch
 "-------------------------------------------------
 " タブの画面上での幅
 "   ruby関連は2個にする
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-autocmd BufRead,BufNewFile *.rb set tabstop=2 softtabstop=2 shiftwidth=2
-autocmd BufRead,BufNewFile *.rhtml set tabstop=2 softtabstop=2 shiftwidth=2
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+autocmd BufRead,BufNewFile *.py set tabstop=4 softtabstop=4 shiftwidth=4
+" autocmd BufRead,BufNewFile *.rb set tabstop=2 softtabstop=2 shiftwidth=2
+" autocmd BufRead,BufNewFile *.rhtml set tabstop=2 softtabstop=2 shiftwidth=2
 " タブをスペースに展開するか否か
 set expandtab
 " 自動的にインデントするか否か
@@ -183,13 +184,12 @@ highlight phpIdentifierComplexP ctermfg=LightCyan
 " syntax - PHP - 関数
 highlight phpFunctions ctermfg=Green
 
-" syntax - Ruby - .cgiはrubyファイルとする
-au! BufRead,BufNewFile *.cgi setfiletype ruby
+" CGI
+" au! BufRead,BufNewFile *.cgi setfiletype ruby
 
 " ActionScript
 " @see http://vim.sourceforge.net/scripts/script.php?script_id=413
-" 但し、svn管理のものは修正が入っている
-au! BufNewFile,BufRead *.as :set filetype=actionscript
+" au! BufNewFile,BufRead *.as :set filetype=actionscript
 
 
 "-------------------------------------------------
