@@ -9,6 +9,13 @@ export LANG=ja_JP.UTF-8
 export EDITOR=vim
 export PAGER=less
 
+export VIRTUALENV_USE_DISTRIBUTE=true
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    export WORKON_HOME=$HOME/.virtualenvs
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
+
+
 alias ll='ls -lAF'
 alias h='history '
 alias hh='history 0 | grep -nr '
