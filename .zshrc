@@ -4,11 +4,10 @@ alias screen='screen -U'
 #-----------------------------
 
 #export PATH=$PATH
-export EDITOR=vim
-export PAGER=lv
-# @see http://journal.mycom.co.jp/column/zsh/002/
-#export LANG=ja_JP.eucJP
+export LANGUAGE=ja_JP:ja
 export LANG=ja_JP.UTF-8
+export EDITOR=vim
+export PAGER=less
 
 alias ll='ls -lAF'
 alias h='history '
