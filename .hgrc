@@ -1,0 +1,12 @@
+[ui]
+username=kjirou <EMAIL@EMAIL>
+
+
+[extensions]
+graphlog=
+color=
+pager=
+
+
+[pager]
+pager=LESS='FSRX' less
