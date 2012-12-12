@@ -264,6 +264,11 @@ nnoremap <C-J> 5j
 nnoremap <C-K> 5k
 nnoremap <C-H> 5h
 nnoremap <C-L> 5l
+" インサートモード中でもhjklで移動
+inoremap <C-J> <DOWN>
+inoremap <C-K> <UP>
+inoremap <C-H> <LEFT>
+inoremap <C-L> <RIGHT>
 " カーソル上下の前方一致補完にする
 cnoremap <C-P> <UP>
 cnoremap <C-N> <DOWN>
