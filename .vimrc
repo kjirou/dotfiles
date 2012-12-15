@@ -1,6 +1,6 @@
 " Notice:
 " - "directory"と"backupdir"のみ環境に合わせて設定すること。
-" - au! BufRead,BufNewFile *.cgi setfiletype ruby というように、.cgi は ruby として判断されている。
+" - au! BufRead,BufNewFile *.cgi setfiletype ruby というように、.cgi は ruby として判断されている
 "
 
 "-------------------------------------------------
