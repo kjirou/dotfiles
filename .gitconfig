@@ -1,0 +1,6 @@
+[user]
+name = kjirou
+email = youremail@email.com
+
+#[core]
+#excludesfile = /home/yourhome/.gitignore
