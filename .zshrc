@@ -9,11 +9,18 @@ export LANG=ja_JP.UTF-8
 export EDITOR=vim
 export PAGER=less
 
+# virtualenvwrapper settings
 export VIRTUALENV_USE_DISTRIBUTE=true
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+# For CentOS
+if [ -f /usr/bin/virtualenvwrapper.sh ]; then
     export WORKON_HOME=$HOME/.virtualenvs
-    source /usr/local/bin/virtualenvwrapper.sh
+    source /usr/bin/virtualenvwrapper.sh
 fi
+# For Ubuntu
+#if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+#    export WORKON_HOME=$HOME/.virtualenvs
+#    source /usr/local/bin/virtualenvwrapper.sh
+#fi
 
 
 alias ll='ls -lAF'
