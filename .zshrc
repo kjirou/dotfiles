@@ -11,27 +11,31 @@ export PAGER=less
 
 # virtualenvwrapper settings
 export VIRTUALENV_USE_DISTRIBUTE=true
-# For CentOS
-if [ -f /usr/bin/virtualenvwrapper.sh ]; then
+# For Mac-homebrew
+if [ -f /usr/local/share/python/virtualenvwrapper.sh ]; then
     export WORKON_HOME=$HOME/.virtualenvs
-    source /usr/bin/virtualenvwrapper.sh
+    source /usr/local/share/python/virtualenvwrapper.sh
 fi
+## For CentOS
+#if [ -f /usr/bin/virtualenvwrapper.sh ]; then
+#    export WORKON_HOME=$HOME/.virtualenvs
+#    source /usr/bin/virtualenvwrapper.sh
+#fi
 # For Ubuntu
 #if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
 #    export WORKON_HOME=$HOME/.virtualenvs
 #    source /usr/local/bin/virtualenvwrapper.sh
 #fi
 
-
+# utils
 alias ll='ls -lAF'
 alias h='history '
 alias hh='history 0 | grep -nr '
 
-# @see http://journal.mycom.co.jp/column/zsh/009/index.html
+# color
 export LS_COLORS=
 
 # compinit
-# @see http://journal.mycom.co.jp/column/zsh/001/
 autoload -U compinit
 compinit
 
@@ -64,4 +68,3 @@ RPROMPT="[%~]"
 # -e = Emacs / -v = Vi
 # @see http://journal.mycom.co.jp/cgi-bin/print?id=41896
 bindkey -e
-
