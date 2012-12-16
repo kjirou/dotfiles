@@ -16,7 +16,7 @@ if [ -f /usr/local/share/python/virtualenvwrapper.sh ]; then
     export WORKON_HOME=$HOME/.virtualenvs
     source /usr/local/share/python/virtualenvwrapper.sh
 fi
-## For CentOS
+# For CentOS
 #if [ -f /usr/bin/virtualenvwrapper.sh ]; then
 #    export WORKON_HOME=$HOME/.virtualenvs
 #    source /usr/bin/virtualenvwrapper.sh
