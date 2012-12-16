@@ -1,9 +1,10 @@
-alias screen='screen -U'
 
+# Your settings ..
 
 #-----------------------------
 
-#export PATH=$PATH
+#export PATH=/usr/local/bin:$PATH
+#export PATH=/usr/local/share/python:$PATH # For Mac-Homebrew-pip-virtualenv
 export LANGUAGE=ja_JP:ja
 export LANG=ja_JP.UTF-8
 export EDITOR=vim
@@ -11,7 +12,7 @@ export PAGER=less
 
 # virtualenvwrapper settings
 export VIRTUALENV_USE_DISTRIBUTE=true
-# For Mac-homebrew
+# For Mac-Homebrew
 if [ -f /usr/local/share/python/virtualenvwrapper.sh ]; then
     export WORKON_HOME=$HOME/.virtualenvs
     source /usr/local/share/python/virtualenvwrapper.sh
@@ -28,6 +29,7 @@ fi
 #fi
 
 # utils
+alias screen='screen -U'
 alias ll='ls -lAF'
 alias h='history '
 alias hh='history 0 | grep -nr '
