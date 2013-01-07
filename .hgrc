@@ -1,5 +1,5 @@
 [ui]
-username=kjirou  <EMAIL@EMAIL>
+username=kjirou <EMAIL@EMAIL>
 
 
 [extensions]
@@ -10,3 +10,7 @@ pager=
 
 [pager]
 pager=LESS='FSRX' less
+
+
+#[hostfingerprints]
+#hg.server.hostname=00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00
