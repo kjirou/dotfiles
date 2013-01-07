@@ -12,5 +12,6 @@ pager=
 pager=LESS='FSRX' less
 
 
+# Ref) http://mercurial.selenic.com/wiki/JapaneseCACertificates#Host_certificate_fingerprints
 #[hostfingerprints]
 #hg.server.hostname=00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00
