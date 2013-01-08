@@ -29,7 +29,6 @@ fi
 #fi
 
 # utils
-alias screen='screen -U'
 alias ll='ls -lAF'
 alias h='history '
 alias hh='history 0 | grep -nr '
