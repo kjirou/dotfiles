@@ -90,6 +90,8 @@ set showcmd
 set notitle
 " 自動改行を禁止する
 set textwidth=0
+" 折り畳み設定にマーカーを使う
+set foldmethod=marker
 
 
 "-------------------------------------------------
