@@ -6,4 +6,5 @@
 *.swp
 *.DS_Store
 .coverage
+.tox/
 env/
