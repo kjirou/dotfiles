@@ -1,13 +1,19 @@
-" Notice:
-" - "directory"と"backupdir"のみ環境に合わせて設定すること。
-" - au! BufRead,BufNewFile *.cgi setfiletype ruby というように、.cgi は ruby として判断されている
-"
+" Getting started:
+" ----
+" cd ~
+" mkdir tmp  # directory, backupdir 用
+" vim ~/.vimrc
+" (Vundleのコメントアウトを削除して :BundleInstall を実行)
+" ----
+
 
 "-------------------------------------------------
-" 未分類の設定
+" 一般的な設定
 "-------------------------------------------------
 " 構文解析を行う
 syntax on
+" 文字コード
+set fileencoding=utf-8
 " 編集中でのバッファ切り替えを可能にする、タブモードの為に必要っぽい
 set hidden
 " コマンドモードの補完をするときに強化されたものを使うか否か
@@ -44,7 +50,6 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 autocmd BufRead,BufNewFile *.py set tabstop=4 softtabstop=4 shiftwidth=4
-autocmd BufRead,BufNewFile *.sh set tabstop=4 softtabstop=4 shiftwidth=4
 " autocmd BufRead,BufNewFile *.rb set tabstop=2 softtabstop=2 shiftwidth=2
 " autocmd BufRead,BufNewFile *.rhtml set tabstop=2 softtabstop=2 shiftwidth=2
 " タブをスペースに展開するか否か
@@ -195,65 +200,21 @@ highlight phpFunctions ctermfg=Green
 " au! BufNewFile,BufRead *.as :set filetype=actionscript
 
 
-"-------------------------------------------------
-" 文字コードに関する設定
-"-------------------------------------------------
-set fileencoding=utf-8
-" if &encoding !=# 'utf-8'
-"   set encoding=japan
-"   set fileencoding=japan
-" endif
-" if has('iconv')
-"   let s:enc_euc = 'euc-jp'
-"   let s:enc_jis = 'iso-2022-jp'
-"   " iconvがeucJP-msに対応しているかをチェック
-"   if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
-"     let s:enc_euc = 'eucjp-ms'
-"     let s:enc_jis = 'iso-2022-jp-3'
-"   " iconvがJISX0213に対応しているかをチェック
-"   elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
-"     let s:enc_euc = 'euc-jisx0213'
-"     let s:enc_jis = 'iso-2022-jp-3'
-"   endif
-"   " fileencodingsを構築
-"   if &encoding ==# 'utf-8'
-"     let s:fileencodings_default = &fileencodings
-"     let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
-"     let &fileencodings = &fileencodings .','. s:fileencodings_default
-"     unlet s:fileencodings_default
-"   else
-"     let &fileencodings = &fileencodings .','. s:enc_jis
-"     set fileencodings+=utf-8,ucs-2le,ucs-2
-"     if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
-"       set fileencodings+=cp932
-"       set fileencodings-=euc-jp
-"       set fileencodings-=euc-jisx0213
-"       set fileencodings-=eucjp-ms
-"       let &encoding = s:enc_euc
-"       let &fileencoding = s:enc_euc
-"     else
-"       let &fileencodings = &fileencodings .','. s:enc_euc
-"     endif
-"   endif
-"   " 定数を処分
-"   unlet s:enc_euc
-"   unlet s:enc_jis
-" endif
-" " 日本語を含まない場合は fileencoding に encoding を使うようにする
-" if has('autocmd')
-"   function! AU_ReCheck_FENC()
-"     if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
-"       let &fileencoding=&encoding
-"     endif
-"   endfunction
-"   autocmd BufReadPost * call AU_ReCheck_FENC()
-" endif
-" " 改行コードの自動認識
-" set fileformats=unix,dos,mac
-" " □とか○の文字があってもカーソル位置がずれないようにする
-" if exists('&ambiwidth')
-"   set ambiwidth=double
-" endif
+" Vundle settings
+" Ref) https://github.com/gmarik/vundle
+" Ref) http://slumbers99.blogspot.jp/2012/02/vim-vundle.html
+"" vi との互換性OFF
+""set nocompatible
+"" ファイル形式の検出を無効にする
+"filetype off
+"" Vundle を初期化して Vundle 自身も Vundle で管理
+"set rtp+=~/.vim/bundle/vundle/
+"call vundle#rc()
+"Bundle 'gmarik/vundle'
+"" パッケージ群
+"Bundle 'kchmck/vim-coffee-script'
+"filetype plugin indent on
+
 
 "-------------------------------------------------
 " キーバインド
@@ -274,5 +235,3 @@ inoremap <C-L> <RIGHT>
 " カーソル上下の前方一致補完にする
 cnoremap <C-P> <UP>
 cnoremap <C-N> <DOWN>
-
-
