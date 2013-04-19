@@ -1,3 +1,6 @@
+# 出力が確認出来る行数
+defscrollback 1000
+
 # 起動時にウィンドウサイズが変更されるのを抑止、FreeBSDのみの問題らしい
 # @see http://www.proton.jp/apps/screen.html
 termcapinfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
