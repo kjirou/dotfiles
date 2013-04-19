@@ -11,9 +11,9 @@ escape ^Tt
 # ステータスライン
 hardstatus alwayslastline "[%02c] %0`%-w%{=b bw}%n %t%{-}%+w %= %?%{=brw}%2`%{-} %?%1`"
 
-# 文字コードの指定
-# UTF-8ではない環境もあるため一時無効にする
-# screen alias="screen -U " で対処する
+## 文字コードの指定
+## UTF-8ではない環境もあるため一時無効にする
+## screen alias="screen -U " で対処する
 #defencoding UTF-8
 
 ## ウィンドウリサイズショートカット
