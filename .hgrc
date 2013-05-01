@@ -1,5 +1,6 @@
 [ui]
 username=kjirou <EMAIL@EMAIL>
+ignore=~/.hgignore
 
 
 [extensions]

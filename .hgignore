@@ -1,0 +1,4 @@
+syntax: glob
+
+# Django の個人用 settings ファイル
+localsettings.py
