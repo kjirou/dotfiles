@@ -1,10 +1,24 @@
 [user]
 name = kjirou
 email = youremail@email.com
+
 [color]
 ui = auto
+
 [alias] # Sync to "hg" command
 st = status
 ci = commit
+
 [core]
 excludesfile = /home/yourhome/.gitignore
+
+[gitflow "branch"]
+master = master
+develop = develop
+[gitflow "prefix"]
+feature = feature/
+release = release/
+hotfix = hotfix/
+support = support/
+versiontag =
+
