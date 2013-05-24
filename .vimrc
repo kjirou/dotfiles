@@ -231,6 +231,11 @@ highlight phpFunctions ctermfg=Green
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-m>'  " デフォルトと変えた
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll|png|jpg|jpeg|gif|zip|gz|swp|pyc)$',
+  \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+  \ }
 
 
 "-------------------------------------------------
