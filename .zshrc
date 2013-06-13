@@ -1,5 +1,59 @@
 
-# Your settings ..
+# Tmp settings
+
+# Apache
+webserver ()
+{
+  sub_command="$1"
+  if [ "$sub_command" = "" ]; then
+    sub_command='start'
+  fi
+  case "$sub_command" in
+    'start'|'stop')
+      sudo apachectl $sub_command
+      ;;
+    'check')
+      ps aux | grep 'httpd'
+  esac
+}
+
+# MySQL Server
+# mysql.server start
+# mysql.server stop
+
+# MTA
+# sudo launchctl start org.postfix.master
+# sudo launchctl stop org.postfix.master
+# ps aux | grep 'postfix'
+mta ()
+{
+  sub_command="$1"
+  if [ "$sub_command" = "" ]; then
+    sub_command='start'
+  fi
+  case "$sub_command" in
+    'start'|'stop')
+      sudo launchctl $sub_command org.postfix.master
+      ;;
+    'check')
+      ps aux | grep 'postfix'
+  esac
+}
+
+# Redis-server
+# redis-server /usr/local/etc/redis.conf  # 起動
+
+# Show hidden-files and hidden-dirs
+showallfiles ()
+{
+  if [ "$1" = "" ]; then
+    defaults write com.apple.finder AppleShowAllFiles TRUE
+  else
+    defaults write com.apple.finder AppleShowAllFiles FALSE
+  fi
+  killall Finder
+}
+
 
 #-----------------------------
 
@@ -28,44 +82,170 @@ fi
 #    source /usr/local/bin/virtualenvwrapper.sh
 #fi
 
-# utils
+# Util aliases
 alias ll='ls -lAF'
 alias h='history '
 alias hh='history 0 | grep '
+alias mm='mysql -uroot '
 
-# color
+# Color
 export LS_COLORS=
 
-# compinit
+# History
+export HISTFILE=$HOME/.zsh_history
+export HISTSIZE=20000
+export SAVEHIST=20000
+setopt hist_ignore_dups  # 直前と同じコマンドをヒストリへ追加しない
+setopt share_history  # ヒストリを共有
+
+# 基本キーバインド選択, -e=Emacs風, -v=Vim風
+bindkey -e
+
+
+# -------------
+# prompt の設定
+# -------------
+setopt prompt_subst
+autoload -U colors; colors
+autoload -Uz vcs_info
+
+# 基本フォーマット, %b=ブランチ名, %s=VCS名 など
+zstyle ':vcs_info:*' formats '[%b]%c%u'
+# 異常時の特殊フォーマット, コンフリクト中などは書式が変わる
+# %a へ原因となったアクション名が入る
+zstyle ':vcs_info:*' actionformats '[%b|%a]%c%u'
+
+# 作業コピー変更を示すマーク, %c に対応
+zstyle ':vcs_info:*' unstagedstr '?'
+# インデックス変更を示すマーク, %u に対応
+zstyle ':vcs_info:*' stagedstr '+'
+
+# 上記 %c,%s の反映を Git の場合のみ有効にしている
+zstyle ':vcs_info:git:*' check-for-changes true
+# Mercurial はまだ動かないので有効にしない、デフォルトは false
+#zstyle ':vcs_info:hg:*' check-for-changes true
+
+# 組み込み関数 precmd を上書きしているらしい, 詳細不明
+precmd () {
+    psvar=()
+    vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+
+# プロンプトの書式設定
+PROMPT=$'%{$fg[yellow]%}%n%{$fg[red]%}@$fg[green]%}%m %{$fg[cyan]%}%~ %1(v|%F{green}%1v%f|)\n%{$fg[green]%}%#%{$reset_color%}'
+
+## 旧プロンプト設定
+#PROMPT='%(!.#.$)'
+#case "$TERM" in
+#xterm*|kterm*|rxvt*)
+#    # TITLE BAR
+#    PROMPT=$(print "%{\e]2;%n@%m: %~\7%}$PROMPT")
+#;;
+#screen*)
+#    # TITLE BAR
+#    # @see http://d.hatena.ne.jp/amt/20060530/Screen
+#    printf "\033P\033]0;$USER@$HOSTNAME\007\033\\"
+#;;
+#esac
+#RPROMPT="[%~]"
+
+
+# ----------------
+# その他の個別設定
+# ----------------
+
+# 補完機能の強化
 autoload -U compinit
 compinit
 
-# history
-# @see http://journal.mycom.co.jp/column/zsh/003/
-export HISTFILE=$HOME/.zsh_history
-export HISTSIZE=10000
-export SAVEHIST=10000
-setopt hist_ignore_dups     # ignore duplication command history list
-setopt share_history        # share command history data
+# ビープを鳴らさない
+setopt nobeep
 
-# PROMPT
-# @see http://journal.mycom.co.jp/column/zsh/002/
-# @see http://www.machu.jp/b/zsh.html
-PROMPT='%(!.#.$)'
-case "$TERM" in
-xterm*|kterm*|rxvt*)
-    # TITLE BAR
-    PROMPT=$(print "%{\e]2;%n@%m: %~\7%}$PROMPT")
-;;
-screen*)
-    # TITLE BAR
-    # @see http://d.hatena.ne.jp/amt/20060530/Screen
-    printf "\033P\033]0;$USER@$HOSTNAME\007\033\\"
-;;
-esac
-RPROMPT="[%~]"
+# ディレクトリだけ入力した場合に cd を自動的に補完
+setopt auto_cd
 
-# Key-Binds
-# -e = Emacs / -v = Vi
-# @see http://journal.mycom.co.jp/cgi-bin/print?id=41896
-bindkey -e
+# cd を実行した際にディレクトリ移動履歴を保存
+setopt autopushd
+setopt pushd_ignore_dups # 同じディレクトリを pushd しない
+
+# --prefix=/usr などの = 以降も補完
+setopt magic_equal_subst
+
+# コマンドラインをコピペする時に RPROMPT 部分を除外する
+setopt transient_rprompt
+
+# 色を使う
+setopt prompt_subst
+
+# 内部コマンド jobs の出力をデフォルトで jobs -l にする
+setopt long_list_jobs
+
+# 補完候補一覧でファイルの種別をマーク表示
+setopt list_types
+
+# サスペンド中のプロセスと同じコマンド名を実行した場合はリジューム
+setopt auto_resume
+
+# 補完候補を一覧表示
+setopt auto_list
+
+# git で HEAD^ が書けなくなるので無効にした
+# ref) http://d.hatena.ne.jp/supermassiveblackhole/20100820/1282284495
+## ファイル名で #, ~, ^ の 3 文字を正規表現として扱う
+#setopt extended_glob
+
+# TAB で順に補完候補を切り替える
+setopt auto_menu
+
+# zsh の開始, 終了時刻をヒストリファイルに書き込む
+setopt extended_history
+
+# =command を command のパス名に展開する
+setopt equals
+
+# ヒストリを呼び出してから実行する間に一旦編集
+setopt hist_verify
+
+# ファイル名の展開で辞書順ではなく数値的にソート
+setopt numeric_glob_sort
+
+# 出力時8ビットを通す
+setopt print_eight_bit
+
+# 補完候補のカーソル選択を有効に
+zstyle ':completion:*:default' menu select=1
+
+# 補完候補の色づけ
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+# カッコの対応などを自動的に補完
+setopt auto_param_keys
+
+# ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
+setopt auto_param_slash
+
+# https://github.com/aziz/tmuxinator/
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+
+
+# --------------------------
+# その他のコマンドの読み込み
+# --------------------------
+
+# autoload の -Uz はとりあえず付けといた方が良い
+#   -U の説明: http://blog.livedoor.jp/miya_k_/archives/206513.html
+#   -z の説明: http://blog.livedoor.jp/miya_k_/archives/227129.html
+autoload -Uz add-zsh-hook
+
+# https://github.com/rupa/z
+#
+#   brew install z でインストール
+if [ `uname` = 'Darwin' ]; then
+  . `brew --prefix`/etc/profile.d/z.sh
+  z_precmd () {
+     z --add "$(pwd -P)"
+  }
+  add-zsh-hook precmd z_precmd
+fi
+
