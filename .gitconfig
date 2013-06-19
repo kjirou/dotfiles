@@ -5,9 +5,10 @@ email = youremail@email.com
 [color]
 ui = auto
 
-[alias] # Sync to "hg" command
-st = status
+[alias]
 ci = commit
+co = checkout
+st = status
 
 [core]
 excludesfile = /home/yourhome/.gitignore
