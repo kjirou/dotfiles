@@ -20,7 +20,8 @@ dist/
 eggs/
 env/
 node_modules/
+sdist/
 nosetests.xml
 pip-log.txt
-sdist/
+testem.*.*.*.json
 
