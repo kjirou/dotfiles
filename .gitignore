@@ -22,6 +22,6 @@ env/
 node_modules/
 sdist/
 nosetests.xml
+npm-debug.log
 pip-log.txt
 testem.*.*.*.json
-
