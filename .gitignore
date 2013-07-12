@@ -1,6 +1,7 @@
 *.db
 *.egg
 *.egg-info
+*.gem
 *.log
 *.mo
 *.orig
@@ -9,6 +10,8 @@
 *.swp
 *.tap
 *.DS_Store
+.bundle
+.config
 .coverage
 .installed.cfg
 .mr.developer.cfg
@@ -21,6 +24,7 @@ eggs/
 env/
 node_modules/
 sdist/
+coverage
 nosetests.xml
 npm-debug.log
 pip-log.txt
