@@ -46,7 +46,7 @@ mta ()
 # Show hidden-files and hidden-dirs
 showallfiles ()
 {
-  if [ "$1" = "" ]; then
+  if [ "$1" = "" -o "$1" = "on" ]; then
     defaults write com.apple.finder AppleShowAllFiles TRUE
   else
     defaults write com.apple.finder AppleShowAllFiles FALSE
