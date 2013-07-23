@@ -17,6 +17,7 @@
 .mr.developer.cfg
 .project
 .pydevproject
+.sqlite3-journal
 .tox/
 develop-eggs/
 dist/
