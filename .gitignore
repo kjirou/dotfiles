@@ -2,10 +2,12 @@
 *.egg
 *.egg-info
 *.gem
+*.idea
 *.log
 *.mo
 *.orig
 *.py[cod]
+*.secret
 *.sqlite
 *.swp
 *.tap
