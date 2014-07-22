@@ -23,3 +23,5 @@ hotfix = hotfix/
 support = support/
 versiontag =
 
+[init]
+templatedir = ~/.git_template
