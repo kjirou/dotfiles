@@ -5,6 +5,42 @@ print('Start loading `~/.mongorc.js`.');
 // Global Variables
 //
 
+var example = function (){
+  var blocks = [];
+
+  blocks.push({
+    title: 'db.dropDatabase()',
+    description: [
+      'カレントDBを削除する。',
+    ].join('\n')
+  });
+  blocks.push({
+    title: 'db.coll.update()',
+    description: [
+      'db.coll.update({conds}, {field_name:value});',
+      'db.coll.update({conds}, {$set:{field_name:value}});',
+      '',
+      '- "foo.bar.baz" のように深い階層を直接更新するには $set が必要'
+    ].join('\n')
+  });
+  blocks.push({
+    title: 'db.coll.remove()',
+    description: [
+      'collection を空にする。',
+    ].join('\n')
+  });
+
+  var insertLeftPadding = function(text, pad){
+    return text.replace(/\n/g, '$&' + pad).replace(/^/, pad);
+  };
+
+  print('');
+  blocks.forEach(function(block){
+    print(insertLeftPadding(block.title, '  ') + '\n');
+    print(insertLeftPadding(block.description, '    ') + '\n');
+  });
+};
+
 
 //
 // Native Object Enhancements
