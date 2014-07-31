@@ -5,7 +5,7 @@ print('Start loading `~/.mongorc.js`.');
 // Global Variables
 //
 
-var example = function (){
+var examples = function (){
   var blocks = [];
 
   blocks.push({
