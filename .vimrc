@@ -243,6 +243,14 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
   \ }
 
+" vim-indent-guides
+" Ref) https://github.com/nathanaelkane/vim-indent-guides
+let g:indent_guides_auto_colors = 0  " 0=色を手動設定する
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+let g:indent_guides_enable_on_vim_startup = 1  " 起動時に自動で有効にするか
+let g:indent_guides_guide_size = 1  " 着色の幅
+
 
 "-------------------------------------------------
 " キーバインド
