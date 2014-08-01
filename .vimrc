@@ -246,9 +246,11 @@ let g:ctrlp_custom_ignore = {
 " vim-indent-guides
 " Ref) https://github.com/nathanaelkane/vim-indent-guides
 let g:indent_guides_auto_colors = 0  " 0=色を手動設定する
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
-let g:indent_guides_enable_on_vim_startup = 1  " 起動時に自動で有効にするか
+" ctermbg で変わるけど 1-7 までしか無い
+" IndentGuidesEven は 2 インデント目の出力になるが、多すぎでいらなかったのでコメントアウト
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=7
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=1
+let g:indent_guides_enable_on_vim_startup = 0  " 起動時に自動で有効にするか
 let g:indent_guides_guide_size = 1  " 着色の幅
 
 
