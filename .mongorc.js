@@ -1,5 +1,10 @@
 print('Start loading `~/.mongorc.js`.');
 
+//
+// Configration
+//
+DBQuery.shellBatchSize = 100;
+
 
 //
 // Global Variables
