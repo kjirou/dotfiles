@@ -54,15 +54,37 @@ showallfiles ()
   killall Finder
 }
 
-# Toggle node version v0.11.2 or v0.10.22 by nodebrew
-togglenode ()
+nextnode ()
 {
-  current=`nodebrew list | grep -e 'current: v0\.11\.2$'`
-  if [ ! -z "$current" ]; then
-    nodebrew use v0.10.22
+  # 良く使うバージョンを設定する
+  nodes=(
+    'v0.10.22'
+    'v0.10.29'
+    'v0.11.11'
+  )
+
+  current=`nodebrew list | grep current: | sed -e 's/current: //'`
+
+  i=0
+  is_used=0
+  for v in ${nodes[@]}; do
+    if [ "$v" = "$current" ]; then
+      is_used=1
+      break
+    fi
+    let i++
+  done
+
+  if [ "$is_used" = "0" ]; then
+    i=0
   else
-    nodebrew use v0.11.2
+    let i++
+    length=${#nodes[@]}
+    i=`expr $i % $length`
   fi
+
+  nodebrew use ${nodes[$i]}
+  echo "(from $current)"
 }
 
 
