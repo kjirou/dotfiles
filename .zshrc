@@ -84,11 +84,11 @@ nextnode ()
     i=`expr $i % $length`
   fi
 
-  # bash と zsh で配列の扱いが異なるので合わせる処理
-  # 先頭に無意味なデータを入れて、添字を 1 足している
-  # Refs) http://d.hatena.ne.jp/kakurasan/20080702/p1
-  nodes=('' "${nodes[@]}")
-  let i++
+  # zsh の時は 1 を足さないとダメ、理由不明
+  # Ref?) http://d.hatena.ne.jp/kakurasan/20080702/p1
+  if [ "$ZSH_VERSION" != "" ]; then
+    let i++
+  fi
 
   next="${nodes[i]}"
   nodebrew use "$next"
