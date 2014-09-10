@@ -56,7 +56,6 @@ showallfiles ()
 
 nextnode ()
 {
-  # 良く使うバージョンを設定する
   nodes=(
     'v0.10.22'
     'v0.10.29'
@@ -81,10 +80,11 @@ nextnode ()
     let i++
     length=${#nodes[@]}
     i=`expr $i % $length`
+    let i++
   fi
 
-  nodebrew use ${nodes[$i]}
-  echo "(from $current)"
+  next="${nodes[i]}"
+  nodebrew use "$next"
 }
 
 
