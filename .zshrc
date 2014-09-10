@@ -54,6 +54,8 @@ showallfiles ()
   killall Finder
 }
 
+# インストール済みの nodebrew list から
+# 任意のバージョンを設定し、その中で順番に use する
 nextnode ()
 {
   nodes=(
@@ -80,8 +82,13 @@ nextnode ()
     let i++
     length=${#nodes[@]}
     i=`expr $i % $length`
-    let i++
   fi
+
+  # bash と zsh で配列の扱いが異なるので合わせる処理
+  # 先頭に無意味なデータを入れて、添字を 1 足している
+  # Refs) http://d.hatena.ne.jp/kakurasan/20080702/p1
+  nodes=('' "${nodes[@]}")
+  let i++
 
   next="${nodes[i]}"
   nodebrew use "$next"
