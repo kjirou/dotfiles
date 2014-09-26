@@ -54,47 +54,6 @@ showallfiles ()
   killall Finder
 }
 
-# インストール済みの nodebrew list から
-# 任意のバージョンを設定し、その中で順番に use する
-nextnode ()
-{
-  nodes=(
-    'v0.10.22'
-    'v0.10.29'
-    'v0.11.11'
-  )
-
-  current=`nodebrew list | grep current: | sed -e 's/current: //'`
-
-  i=0
-  is_used=0
-  for v in ${nodes[@]}; do
-    if [ "$v" = "$current" ]; then
-      is_used=1
-      break
-    fi
-    let i++
-  done
-
-  if [ "$is_used" = "0" ]; then
-    i=0
-  else
-    let i++
-    length=${#nodes[@]}
-    i=`expr $i % $length`
-  fi
-
-  # zsh の時は 1 を足さないとダメ、理由不明
-  # Ref?) http://d.hatena.ne.jp/kakurasan/20080702/p1
-  if [ "$ZSH_VERSION" != "" ]; then
-    let i++
-  fi
-
-  next="${nodes[i]}"
-  nodebrew use "$next"
-}
-
-
 #-----------------------------
 
 #export PATH=/usr/local/bin:$PATH
