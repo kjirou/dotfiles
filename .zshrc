@@ -577,3 +577,5 @@ if [ `uname` = 'Darwin' ]; then
   add-zsh-hook precmd z_precmd
 fi
 
+# direnv
+eval "$(direnv hook zsh)"
