@@ -6,8 +6,10 @@ email = youremail@email.com
 ui = auto
 
 [alias]
+b = branch
 ci = commit
 co = checkout
+p = push
 st = status
 
 [core]
