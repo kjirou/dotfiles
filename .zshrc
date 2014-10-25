@@ -83,9 +83,8 @@ fi
 
 # Util aliases
 alias ll='ls -lAF'
-alias h='history '
-alias hh='history 0 | grep '
 alias mm='mysql -uroot '
+alias rr='cd $(npm bin)/../..'
 
 # Color
 export LS_COLORS=
