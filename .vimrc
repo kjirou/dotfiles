@@ -179,61 +179,22 @@ set guioptions+=a
 "-------------------------------------------------
 " 色に関する設定
 "-------------------------------------------------
-" ctermbg=ターミナル時の背景色
-" ctermfg=ターミナル時の文字色
-" 被検索対象文字列
+" ctermbg=背景色
+" ctermfg=文字色
+" 検索対象
 highlight Search ctermbg=Yellow ctermfg=Black
 " タブと行末半角スペースと半角スペース
 highlight TabSpace ctermbg=DarkBlue
 match TabSpace /\t\|\s\+$/
 " ディレクトリ
 highlight Directory ctermfg=LightCyan
-" syntax - 通常
+" 通常
 highlight Normal ctermfg=White
-" syntax - コメント
+" コメント
 highlight Comment ctermfg=DarkRed
-" syntax - PHP - 条件文
-" ex) declare else enddeclare endswitch elseif endif if switch
-highlight phpConditional ctermfg=Magenta
-" syntax - PHP - 繰り返し文
-" ex) as do endfor endforeach endwhile for foreach while
-highlight phpRepeat ctermfg=Magenta
-" syntax - PHP - 制御文
-" ex) return break continue exit
-highlight phpStatement ctermfg=Magenta
-" syntax - PHP - 演算子
-" phpOperator と phpRelation を合わせて（通常の）演算子と考える
-highlight phpOperator ctermfg=White
-highlight phpRelation ctermfg=White
-" syntax - PHP - 変数の前の $
-highlight phpVarSelector ctermfg=LightCyan
-" syntax - PHP - メンバを表す ->
-highlight phpMemberSelector ctermfg=LightCyan
-" syntax - PHP - ラベル
-" ex) case default switch
-highlight phpLabel ctermfg=Magenta
-" syntax - PHP - 文字列
-" ...Double = " , ...Backtick = ` , ...Single = '
-highlight phpStringDouble ctermfg=White
-highlight phpBacktick ctermfg=White
-highlight phpStringSingle ctermfg=White
-" syntax - PHP - 数値
-highlight phpNumber ctermfg=White
-" syntax - PHP - 変数
-" 以下全てで変数全体と考える
-highlight phpIdentifier ctermfg=LightCyan
-highlight phpIdentifierSimply ctermfg=LightCyan
-highlight phpIdentifierComplex ctermfg=LightCyan
-highlight phpIdentifierComplexP ctermfg=LightCyan
-" syntax - PHP - 関数
-highlight phpFunctions ctermfg=Green
 
 " CGI
 " au! BufRead,BufNewFile *.cgi setfiletype ruby
-
-" ActionScript
-" @see http://vim.sourceforge.net/scripts/script.php?script_id=413
-" au! BufNewFile,BufRead *.as :set filetype=actionscript
 
 
 "-------------------------------------------------
