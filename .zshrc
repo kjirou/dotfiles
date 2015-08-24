@@ -54,6 +54,18 @@ showallfiles ()
   killall Finder
 }
 
+# check-for-changes が特定リポジトリで重いことがあるので、その対処
+# ただその前に、重いリポジトリ内で一度明示的に git status を打ってみる
+# それで早くなったことがある
+enable_check_for_changes ()
+{
+  zstyle ':vcs_info:git:*' check-for-changes true
+}
+disable_check_for_changes ()
+{
+  zstyle ':vcs_info:git:*' check-for-changes false
+}
+
 #-----------------------------
 
 #export PATH=/usr/local/bin:$PATH
