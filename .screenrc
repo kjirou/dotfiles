@@ -1,5 +1,5 @@
 # 出力が確認出来る行数
-defscrollback 1000
+defscrollback 8192
 
 # 起動時にウィンドウサイズが変更されるのを抑止、FreeBSDのみの問題らしい
 # @see http://www.proton.jp/apps/screen.html
