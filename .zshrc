@@ -267,3 +267,6 @@ fi
 
 # direnv
 eval "$(direnv hook zsh)"
+
+# npm completion
+# npm completion >> ~/.zshrc を実行
