@@ -13,7 +13,7 @@ p = push
 st = status
 
 [core]
-excludesfile = /home/yourhome/.gitignore
+excludesfile = ~/.gitignore.global
 
 [gitflow "branch"]
 master = master
