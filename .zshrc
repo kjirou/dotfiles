@@ -1,5 +1,18 @@
 # Tmp settings
 
+function filter_pipeline_by_yesno() {
+  prompt_message="$1"
+  default_value="$2"
+
+  printf "$1"
+  read answer
+  case "$answer" in
+    'y' | 'yes' | 'Y' | 'YES' | 'Yes') return 0;;
+    'n' | "no" | 'N' | 'NO' | 'No') return 1;;
+    *) return "$2";;
+  esac
+}
+
 # Apache
 webserver ()
 {
