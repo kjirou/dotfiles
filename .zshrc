@@ -14,8 +14,7 @@ function filter_pipeline_by_yesno() {
 }
 
 # Apache
-webserver ()
-{
+function webserver() {
   sub_command="$1"
   if [ "$sub_command" = "" ]; then
     sub_command='start'
@@ -37,8 +36,7 @@ webserver ()
 # sudo launchctl start org.postfix.master
 # sudo launchctl stop org.postfix.master
 # ps aux | grep 'postfix'
-mta ()
-{
+function mta (){
   sub_command="$1"
   if [ "$sub_command" = "" ]; then
     sub_command='start'
@@ -56,8 +54,7 @@ mta ()
 # redis-server /usr/local/etc/redis.conf  # 起動
 
 # Show hidden-files and hidden-dirs
-showallfiles ()
-{
+function showallfiles() {
   if [ "$1" = "" -o "$1" = "on" ]; then
     defaults write com.apple.finder AppleShowAllFiles TRUE
   else
@@ -69,12 +66,10 @@ showallfiles ()
 # check-for-changes が特定リポジトリで重いことがあるので、その対処
 # ただその前に、重いリポジトリ内で一度明示的に git status を打ってみる
 # それで早くなったことがある
-enable_check_for_changes ()
-{
+function enable_check_for_changes() {
   zstyle ':vcs_info:git:*' check-for-changes true
 }
-disable_check_for_changes ()
-{
+function disable_check_for_changes() {
   zstyle ':vcs_info:git:*' check-for-changes false
 }
 
