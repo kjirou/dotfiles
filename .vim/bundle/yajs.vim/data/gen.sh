@@ -10,6 +10,7 @@ files='
   es6-math
   es6-json
   es6-date
+  es6-reflect
   es6-regexp
   es6-map
   es6-set
@@ -28,8 +29,10 @@ files='
   web-crypto
   web-fetch
   web-service-worker
+  web-payment
   dom-node
   dom-elem
+  dom-form
   dom-event
   dom-document
   dom-storage

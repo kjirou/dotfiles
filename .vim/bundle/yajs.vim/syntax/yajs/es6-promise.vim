@@ -1,5 +1,5 @@
 syntax keyword javascriptGlobal Promise nextgroup=javascriptGlobalPromiseDot,javascriptFuncCallArg
-syntax match   javascriptGlobalPromiseDot /\./ contained nextgroup=javascriptPromiseStaticMethod
+syntax match   javascriptGlobalPromiseDot /\./ contained nextgroup=javascriptPromiseStaticMethod,javascriptProp,javascriptMethod
 syntax keyword javascriptPromiseStaticMethod contained resolve reject all race nextgroup=javascriptFuncCallArg
 if exists("did_javascript_hilink") | HiLink javascriptPromiseStaticMethod Keyword
 endif

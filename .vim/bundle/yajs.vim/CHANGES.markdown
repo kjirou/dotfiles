@@ -1,6 +1,16 @@
 CHANGE LOG
 ==========
 
+### Version 1.5
+- Lots of bug Fix
+
+### Version 1.4
+- Better Array Comprehesion support
+- Better Template highlight
+- AngularJS JSDoc module
+- Fix object literal syntax
+- Don't break vim-jsx
+
 ### Version 1.3
 - Add ServiceWorker
 - Some code refactor
