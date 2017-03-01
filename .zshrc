@@ -261,16 +261,18 @@ setopt auto_param_slash
 #   -z の説明: http://blog.livedoor.jp/miya_k_/archives/227129.html
 autoload -Uz add-zsh-hook
 
-# https://github.com/rupa/z
-#
-#   brew install z でインストール
-if [ `uname` = 'Darwin' ]; then
-  . `brew --prefix`/etc/profile.d/z.sh
-  z_precmd () {
-     z --add "$(pwd -P)"
-  }
-  add-zsh-hook precmd z_precmd
-fi
+# DEPRECATED: Mac OSX (Sierra) で動かなかった
+#             これと同根に見える) https://github.com/rupa/z/issues/123
+## https://github.com/rupa/z
+##
+##   brew install z でインストール
+#if [ `uname` = 'Darwin' ]; then
+#  . `brew --prefix`/etc/profile.d/z.sh
+#  z_precmd () {
+#     z --add "$(pwd -P)"
+#  }
+#  add-zsh-hook precmd z_precmd
+#fi
 
 # direnv
 eval "$(direnv hook zsh)"
