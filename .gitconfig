@@ -1,6 +1,6 @@
 [user]
 name = kjirou
-email = youremail@email.com
+email = sorenariblog@gmail.com
 
 [color]
 ui = auto
@@ -11,6 +11,7 @@ ci = commit
 co = checkout
 p = push
 st = status
+graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
 
 [core]
 excludesfile = ~/.gitignore.global
