@@ -17,7 +17,7 @@ call pathogen#infect()
 "-------------------------------------------------
 " 無効にしたい ./vim/bundle 以下のプラグイン
 "-------------------------------------------------
-set runtimepath-=~/.vim/bundle/ctrlp.vim
+"set runtimepath-=~/.vim/bundle/foo-bar.vim
 
 
 "-------------------------------------------------
@@ -201,16 +201,6 @@ highlight Comment ctermfg=DarkRed
 "-------------------------------------------------
 " プラグイン関連
 "-------------------------------------------------
-" ctrlp.vim
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_map = '<c-m>'  " デフォルトと変えた
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll|png|jpg|jpeg|gif|zip|gz|swp|pyc)$',
-  \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-  \ }
-
 " vim-indent-guides
 " Ref) https://github.com/nathanaelkane/vim-indent-guides
 let g:indent_guides_auto_colors = 0  " 0=色を手動設定する
