@@ -211,6 +211,10 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=7
 let g:indent_guides_enable_on_vim_startup = 0  " 起動時に自動で有効にするか
 let g:indent_guides_guide_size = 1  " 着色の幅
 
+" vim-javascript
+let g:javascript_plugin_flow = 1
+let g:javascript_plugin_jsdoc = 1
+
 
 "-------------------------------------------------
 " キーバインド
