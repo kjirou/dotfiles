@@ -29,3 +29,9 @@ cp /path/to/dotfiles/.vimrc ./
 # In the case of Mac OS X, it is necessary to specify an absolute path
 ln -s /path/to/dotfiles/.vim .vim
 ```
+
+### screen
+
+```bash
+cp /path/to/dotfiles/.screenrc $HOME/
+```
