@@ -13,6 +13,13 @@ curl -o .zshrc https://raw.githubusercontent.com/kjirou/dotfiles/master/.zshrc
 exit
 ```
 
+### git
+
+```bash
+cd $HOME
+curl -o .gitconfig https://raw.githubusercontent.com/kjirou/dotfiles/master/.gitconfig
+```
+
 ### vim
 
 ```bash
