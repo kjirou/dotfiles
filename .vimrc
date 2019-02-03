@@ -85,7 +85,6 @@ set hlsearch
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-autocmd BufRead,BufNewFile *.es6 setfiletype javascript
 autocmd BufRead,BufNewFile *.tsx setfiletype typescript
 autocmd BufRead,BufNewFile *.py set tabstop=4 softtabstop=4 shiftwidth=4
 " autocmd BufRead,BufNewFile *.rb set tabstop=2 softtabstop=2 shiftwidth=2
