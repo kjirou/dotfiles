@@ -80,15 +80,10 @@ set hlsearch
 "-------------------------------------------------
 " 編集に関する設定
 "-------------------------------------------------
-" タブの画面上での幅
-"   ruby関連は2個にする
+" タブ文字の表示設定
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-autocmd BufRead,BufNewFile *.tsx setfiletype typescript
-autocmd BufRead,BufNewFile *.py set tabstop=4 softtabstop=4 shiftwidth=4
-" autocmd BufRead,BufNewFile *.rb set tabstop=2 softtabstop=2 shiftwidth=2
-" autocmd BufRead,BufNewFile *.rhtml set tabstop=2 softtabstop=2 shiftwidth=2
 " タブをスペースに展開するか否か
 set expandtab
 " 自動的にインデントするか否か
@@ -102,6 +97,9 @@ set backspace=indent,eol,start
 " @see http://jarp.does.notwork.org/diary/200612a.html
 set noshowmatch
 let loaded_matchparen = 1
+" ファイル拡張子別の明示的な syntax highlighting の設定。
+" 及び、各種設定の上書き。
+autocmd BufRead,BufNewFile *.tsx set filetype=typescript
 
 
 "-------------------------------------------------
