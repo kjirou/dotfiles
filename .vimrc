@@ -100,6 +100,10 @@ let loaded_matchparen = 1
 " ファイル拡張子別の明示的な syntax highlighting の設定。
 " 及び、各種設定の上書き。
 autocmd BufRead,BufNewFile *.tsx set filetype=typescript
+autocmd FileType go setlocal noexpandtab
+autocmd FileType go setlocal tabstop=4
+autocmd FileType go setlocal shiftwidth=4
+autocmd FileType go setlocal softtabstop=0
 
 
 "-------------------------------------------------
