@@ -97,13 +97,6 @@ set backspace=indent,eol,start
 " @see http://jarp.does.notwork.org/diary/200612a.html
 set noshowmatch
 let loaded_matchparen = 1
-" ファイル拡張子別の明示的な syntax highlighting の設定。
-" 及び、各種設定の上書き。
-autocmd BufRead,BufNewFile *.tsx set filetype=typescript
-autocmd FileType go setlocal noexpandtab
-autocmd FileType go setlocal tabstop=4
-autocmd FileType go setlocal shiftwidth=4
-autocmd FileType go setlocal softtabstop=0
 
 
 "-------------------------------------------------
@@ -237,3 +230,14 @@ inoremap <C-L> <RIGHT>
 " カーソル上下の前方一致補完にする
 cnoremap <C-P> <UP>
 cnoremap <C-N> <DOWN>
+
+
+"-------------------------------------------------
+" ファイル拡張子別の明示的な設定や一部設定の上書き
+"-------------------------------------------------
+autocmd BufRead,BufNewFile *.tsx set filetype=typescript
+autocmd FileType go setlocal noexpandtab
+autocmd FileType go setlocal tabstop=4
+autocmd FileType go setlocal shiftwidth=4
+autocmd FileType go setlocal softtabstop=0
+autocmd FileType go setlocal listchars=tab:\ \ 
