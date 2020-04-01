@@ -75,8 +75,6 @@ function disable_check_for_changes() {
 
 #-----------------------------
 
-#export PATH=/usr/local/bin:$PATH
-#export PATH=/usr/local/share/python:$PATH # For Mac-Homebrew-pip-virtualenv
 export LANGUAGE=ja_JP:ja
 export LANG=ja_JP.UTF-8
 export EDITOR=vim
