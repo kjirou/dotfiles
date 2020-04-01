@@ -236,8 +236,8 @@ cnoremap <C-N> <DOWN>
 " ファイル拡張子別の明示的な設定や一部設定の上書き
 "-------------------------------------------------
 autocmd BufRead,BufNewFile *.tsx set filetype=typescript
-autocmd FileType go setlocal noexpandtab
-autocmd FileType go setlocal tabstop=4
-autocmd FileType go setlocal shiftwidth=4
-autocmd FileType go setlocal softtabstop=0
-autocmd FileType go setlocal listchars=tab:\ \ 
+autocmd FileType go set noexpandtab
+autocmd FileType go set tabstop=4
+autocmd FileType go set shiftwidth=4
+autocmd FileType go set softtabstop=0
+autocmd FileType go set listchars=tab:\ \ 
