@@ -28,3 +28,6 @@ versiontag =
 
 [init]
 templatedir = ~/.git_template
+
+[pull]
+ff = only
