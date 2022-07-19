@@ -73,6 +73,31 @@ function disable_check_for_changes() {
   zstyle ':vcs_info:git:*' check-for-changes false
 }
 
+# MySQL を操作した際に
+# Lost connection to MySQL server at 'sending authentication information', system error: 32
+# というエラーになる問題への対処用に作った、プロセス kill コマンド
+function kill_mysqld() {
+  mysqld_process=$(ps aux | grep -E 'mysql/[0-9]+\.[0-9]+\.[0-9]+/bin/mysqld ')
+  if [ "$mysqld_process" = "" ]; then
+    echo 'mysqld is not running'
+    return 0
+  fi
+
+  mysqld_pid=$(echo "$mysqld_process" | sed -E 's/^[^ ]+ +([0-9]+) +.+$/\1/')
+  killer="kill -9 $mysqld_pid"
+
+  echo '-- found mysqld process --'
+  echo "$mysqld_process"
+  echo '--------------------------'
+  filter_pipeline_by_yesno 'execute `'"$killer"'`? [y/N]: ' 1
+  if [ "$?" = '1' ]; then
+    return 1
+  fi
+
+  eval $killer
+  echo 'the current mysqld process has been killed'
+}
+
 #-----------------------------
 
 export LANGUAGE=ja_JP:ja
@@ -80,28 +105,8 @@ export LANG=ja_JP.UTF-8
 export EDITOR=vim
 export PAGER=less
 
-# virtualenvwrapper settings
-export VIRTUALENV_USE_DISTRIBUTE=true
-# For Mac-Homebrew
-if [ -f /usr/local/share/python/virtualenvwrapper.sh ]; then
-    export WORKON_HOME=$HOME/.virtualenvs
-    source /usr/local/share/python/virtualenvwrapper.sh
-fi
-# For CentOS
-#if [ -f /usr/bin/virtualenvwrapper.sh ]; then
-#    export WORKON_HOME=$HOME/.virtualenvs
-#    source /usr/bin/virtualenvwrapper.sh
-#fi
-# For Ubuntu
-#if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-#    export WORKON_HOME=$HOME/.virtualenvs
-#    source /usr/local/bin/virtualenvwrapper.sh
-#fi
-
 # Util aliases
 alias ll='ls -lAF'
-alias mm='mysql -uroot '
-alias rr='cd $(npm bin)/../..'
 
 # Color
 export LS_COLORS=
@@ -149,21 +154,6 @@ precmd () {
 
 # プロンプトの書式設定
 PROMPT=$'%{$fg[yellow]%}%n%{$fg[red]%}@$fg[green]%}%m %{$fg[cyan]%}%~ %1(v|%F{green}%1v%f|)\n%{$fg[green]%}%#%{$reset_color%}'
-
-## 旧プロンプト設定
-#PROMPT='%(!.#.$)'
-#case "$TERM" in
-#xterm*|kterm*|rxvt*)
-#    # TITLE BAR
-#    PROMPT=$(print "%{\e]2;%n@%m: %~\7%}$PROMPT")
-#;;
-#screen*)
-#    # TITLE BAR
-#    # @see http://d.hatena.ne.jp/amt/20060530/Screen
-#    printf "\033P\033]0;$USER@$HOSTNAME\007\033\\"
-#;;
-#esac
-#RPROMPT="[%~]"
 
 
 # ----------------
@@ -240,40 +230,7 @@ setopt auto_param_keys
 # ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
 setopt auto_param_slash
 
-# https://github.com/aziz/tmuxinator/
-[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
-
-
-# -------------------
-# git-flow-completion
-# -------------------
-#source path/to/git-flow-completion-zsh
-
 
 # --------------------------
 # その他のコマンドの読み込み
 # --------------------------
-
-# autoload の -Uz はとりあえず付けといた方が良い
-#   -U の説明: http://blog.livedoor.jp/miya_k_/archives/206513.html
-#   -z の説明: http://blog.livedoor.jp/miya_k_/archives/227129.html
-autoload -Uz add-zsh-hook
-
-# DEPRECATED: Mac OSX (Sierra) で動かなかった
-#             これと同根に見える) https://github.com/rupa/z/issues/123
-## https://github.com/rupa/z
-##
-##   brew install z でインストール
-#if [ `uname` = 'Darwin' ]; then
-#  . `brew --prefix`/etc/profile.d/z.sh
-#  z_precmd () {
-#     z --add "$(pwd -P)"
-#  }
-#  add-zsh-hook precmd z_precmd
-#fi
-
-# direnv
-eval "$(direnv hook zsh)"
-
-# npm completion
-# npm completion >> ~/.zshrc を実行
