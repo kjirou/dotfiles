@@ -1,46 +1,8 @@
-" Getting started:
-" ----
+" ## Preparation
+" ```
 " cd ~
 " mkdir tmp  # directory, backupdir 用
-" vim ~/.vimrc
-" (Vundleのコメントアウトを削除して :BundleInstall を実行)
-" (ただし、何か大事な設定が変わって戻せなかったので保留中)
-" ----
-
-
-"-------------------------------------------------
-" Autoloads
-"-------------------------------------------------
-call pathogen#infect()
-
-
-"-------------------------------------------------
-" 無効にしたい ./vim/bundle 以下のプラグイン
-"-------------------------------------------------
-"set runtimepath-=~/.vim/bundle/foo-bar.vim
-
-
-"-------------------------------------------------
-" Vundle settings
-"-------------------------------------------------
-"
-" Vundle設定は一番上に書くらしい
-"
-" https://github.com/gmarik/vundle
-" http://slumbers99.blogspot.jp/2012/02/vim-vundle.html
-" http://shu-cream.blogspot.jp/2011/04/2011vimvundle.html
-"
-"" vi との互換性OFF
-"set nocompatible
-"" ファイル形式の検出を無効にする
-"filetype off
-"" Vundle を初期化して Vundle 自身も Vundle で管理
-"set rtp+=~/.vim/bundle/vundle/
-""call vundle#rc()
-"Bundle 'gmarik/vundle'
-"" CoffeeScript用パッケージ
-"Bundle 'kchmck/vim-coffee-script'
-"filetype plugin indent on
+" ```
 
 
 "-------------------------------------------------
