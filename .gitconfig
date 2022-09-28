@@ -27,7 +27,7 @@ support = support/
 versiontag =
 
 [init]
-templatedir = ~/.git_template
+#templatedir = ~/.git_template
 
 [pull]
 ff = only
